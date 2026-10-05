@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vikassongra013-hub.github.io/vikas-portfolio/sitemap.xml
