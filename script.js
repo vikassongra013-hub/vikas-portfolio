@@ -1,42 +1,31 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
-    // Navbar scroll effect
-    const navbar = document.querySelector(".navbar");
+    // =========================
+    // MOBILE MENU
+    // =========================
 
-    if (navbar) {
-        window.addEventListener("scroll", () => {
-            navbar.style.background =
-                window.scrollY > 40
-                    ? "rgba(5, 7, 11, 0.92)"
-                    : "rgba(5, 7, 11, 0.72)";
-        });
-    }
-
-
-    // Mobile menu
     const menuToggle = document.getElementById("menuToggle");
     const navLinks = document.getElementById("navLinks");
 
     if (menuToggle && navLinks) {
 
-        menuToggle.addEventListener("click", () => {
+        menuToggle.addEventListener("click", function () {
 
             navLinks.classList.toggle("active");
             menuToggle.classList.toggle("active");
 
-            const isOpen =
-                navLinks.classList.contains("active");
+            const opened = navLinks.classList.contains("active");
 
             menuToggle.setAttribute(
                 "aria-expanded",
-                isOpen ? "true" : "false"
+                opened ? "true" : "false"
             );
+
         });
 
+        navLinks.querySelectorAll("a").forEach(function (link) {
 
-        navLinks.querySelectorAll("a").forEach((link) => {
-
-            link.addEventListener("click", () => {
+            link.addEventListener("click", function () {
 
                 navLinks.classList.remove("active");
                 menuToggle.classList.remove("active");
@@ -45,93 +34,133 @@ document.addEventListener("DOMContentLoaded", () => {
                     "aria-expanded",
                     "false"
                 );
+
             });
 
         });
+
     }
 
 
-    // Scroll reveal
+    // =========================
+    // NAVBAR SCROLL
+    // =========================
+
+    const navbar = document.querySelector(".navbar");
+
+    if (navbar) {
+
+        window.addEventListener("scroll", function () {
+
+            if (window.scrollY > 40) {
+
+                navbar.style.background =
+                    "rgba(5, 7, 11, 0.92)";
+
+            } else {
+
+                navbar.style.background =
+                    "rgba(5, 7, 11, 0.72)";
+
+            }
+
+        });
+
+    }
+
+
+    // =========================
+    // SCROLL REVEAL
+    // =========================
+
     const revealItems = document.querySelectorAll(
         ".section, .project-card, .skill-card, .stat-card, .contact-box"
     );
 
-    const revealObserver = new IntersectionObserver(
-        (entries, observer) => {
+    if ("IntersectionObserver" in window) {
 
-            entries.forEach((entry) => {
+        const observer = new IntersectionObserver(
+            function (entries, observer) {
 
-                if (entry.isIntersecting) {
+                entries.forEach(function (entry) {
 
-                    entry.target.style.opacity = "1";
-                    entry.target.style.transform =
-                        "translateY(0)";
+                    if (entry.isIntersecting) {
 
-                    observer.unobserve(entry.target);
-                }
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform =
+                            "translateY(0)";
 
-            });
+                        observer.unobserve(entry.target);
 
-        },
-        {
-            threshold: 0.12
-        }
-    );
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+        revealItems.forEach(function (item) {
+
+            item.style.opacity = "0";
+            item.style.transform = "translateY(25px)";
+            item.style.transition =
+                "opacity 0.7s ease, transform 0.7s ease";
+
+            observer.observe(item);
+
+        });
+
+    }
 
 
-    revealItems.forEach((item) => {
+    // =========================
+    // ACTIVE NAVIGATION
+    // =========================
 
-        item.style.opacity = "0";
-        item.style.transform = "translateY(25px)";
-        item.style.transition =
-            "opacity 0.7s ease, transform 0.7s ease";
-
-        revealObserver.observe(item);
-
-    });
-
-
-    // Active navigation
     const sections =
         document.querySelectorAll("section[id]");
 
     const navigationLinks =
         document.querySelectorAll(".nav-links a");
 
-
-    window.addEventListener("scroll", () => {
+    window.addEventListener("scroll", function () {
 
         let currentSection = "";
 
-        sections.forEach((section) => {
+        sections.forEach(function (section) {
 
-            const sectionTop =
+            const top =
                 section.offsetTop - 160;
 
-            const sectionHeight =
+            const height =
                 section.offsetHeight;
 
             if (
-                window.scrollY >= sectionTop &&
-                window.scrollY <
-                sectionTop + sectionHeight
+                window.scrollY >= top &&
+                window.scrollY < top + height
             ) {
+
                 currentSection =
                     section.getAttribute("id");
+
             }
 
         });
 
-
-        navigationLinks.forEach((link) => {
+        navigationLinks.forEach(function (link) {
 
             link.style.color = "";
 
             if (
                 link.getAttribute("href") ===
-                `#${currentSection}`
+                "#" + currentSection
             ) {
+
                 link.style.color = "#00e5ff";
+
             }
 
         });
@@ -139,19 +168,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    // Current year
+    // =========================
+    // CURRENT YEAR
+    // =========================
+
     const footerText =
         document.querySelector(".footer-content > p");
 
     if (footerText) {
 
         footerText.textContent =
-            `© ${new Date().getFullYear()} Vikas Kumar. All rights reserved.`;
+            "© " +
+            new Date().getFullYear() +
+            " Vikas Kumar. All rights reserved.";
 
     }
 
 
-    // Console branding
+    // =========================
+    // BRANDING
+    // =========================
+
     console.log(
         "%c VK — Vikas Kumar ",
         "color:#00e5ff;font-size:20px;font-weight:bold;"
