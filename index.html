@@ -16,38 +16,48 @@
 
     <!-- Navigation -->
     <header class="navbar">
-        <div class="nav-container">
-<div class="nav-container">
 
-    <a href="#home" class="logo">
-        <span>VK</span>
-    </a>
+    <div class="nav-container">
 
-    <nav class="nav-links" id="navLinks">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </nav>
+        <a href="#home" class="logo">
+            <span>VK</span>
+        </a>
 
-    <a href="#contact" class="nav-button">Let's Talk</a>
+        <nav class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
 
-    <button
-        class="menu-toggle"
-        id="menuToggle"
-        type="button"
-        aria-label="Open navigation menu"
-        aria-expanded="false"
-    >
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
+        <a href="#contact" class="nav-button">
+            Let's Talk
+        </a>
 
-</div>
-    </header>
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            onclick="
+                document.getElementById('navLinks').classList.toggle('active');
+                this.classList.toggle('active');
+                this.setAttribute(
+                    'aria-expanded',
+                    this.classList.contains('active') ? 'true' : 'false'
+                );
+            "
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
+    </div>
+
+</header>
 
     <!-- Hero Section -->
     <main>
