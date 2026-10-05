@@ -95,6 +95,156 @@ document.addEventListener("DOMContentLoaded", () => {
                 link.getAttribute("href") ===
                 `#${currentSection}`
             ) {
+/* =================================
+   VIKAS KUMAR — PORTFOLIO
+   Complete Interactive JavaScript
+================================ */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* ================================
+       NAVBAR SCROLL EFFECT
+    ================================= */
+
+    const navbar = document.querySelector(".navbar");
+
+    if (navbar) {
+        window.addEventListener("scroll", () => {
+
+            if (window.scrollY > 40) {
+                navbar.style.background = "rgba(5, 7, 11, 0.92)";
+            } else {
+                navbar.style.background = "rgba(5, 7, 11, 0.72)";
+            }
+
+        });
+    }
+
+
+    /* ================================
+       MOBILE MENU
+    ================================= */
+
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    if (menuToggle && navLinks) {
+
+        menuToggle.addEventListener("click", () => {
+
+            const isOpen = navLinks.classList.toggle("active");
+
+            menuToggle.classList.toggle("active", isOpen);
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                isOpen ? "true" : "false"
+            );
+
+        });
+
+
+        /* Close menu after clicking a link */
+
+        const links = navLinks.querySelectorAll("a");
+
+        links.forEach((link) => {
+
+            link.addEventListener("click", () => {
+
+                navLinks.classList.remove("active");
+                menuToggle.classList.remove("active");
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            });
+
+        });
+
+    }
+
+
+    /* ================================
+       SCROLL REVEAL
+    ================================= */
+
+    const revealItems = document.querySelectorAll(
+        ".section, .project-card, .skill-card, .stat-card, .contact-box"
+    );
+
+    const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
+
+            entries.forEach((entry) => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+    revealItems.forEach((item) => {
+
+        item.style.opacity = "0";
+        item.style.transform = "translateY(25px)";
+
+        item.style.transition =
+            "opacity 0.7s ease, transform 0.7s ease";
+
+        revealObserver.observe(item);
+
+    });
+
+
+    /* ================================
+       ACTIVE NAVIGATION
+    ================================= */
+
+    const sections = document.querySelectorAll("section[id]");
+    const desktopNavLinks = document.querySelectorAll(".nav-links a");
+
+    window.addEventListener("scroll", () => {
+
+        let currentSection = "";
+
+        sections.forEach((section) => {
+
+            const sectionTop = section.offsetTop - 160;
+            const sectionHeight = section.offsetHeight;
+
+            if (
+                window.scrollY >= sectionTop &&
+                window.scrollY < sectionTop + sectionHeight
+            ) {
+                currentSection = section.getAttribute("id");
+            }
+
+        });
+
+
+        desktopNavLinks.forEach((link) => {
+
+            link.style.color = "";
+
+            if (
+                link.getAttribute("href") ===
+                `#${currentSection}`
+            ) {
                 link.style.color = "#00e5ff";
             }
 
@@ -104,23 +254,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* ================================
-       Current year
+       CURRENT YEAR
     ================================= */
-
-    const year = new Date().getFullYear();
 
     const footerText = document.querySelector(
         ".footer-content > p"
     );
 
     if (footerText) {
+
         footerText.textContent =
-            `© ${year} Vikas Kumar. All rights reserved.`;
+            `© ${new Date().getFullYear()} Vikas Kumar. All rights reserved.`;
+
     }
 
 
     /* ================================
-       Console branding
+       CONSOLE BRANDING
     ================================= */
 
     console.log(
@@ -133,34 +283,4 @@ document.addEventListener("DOMContentLoaded", () => {
         "color:#98a4b6;font-size:13px;"
     );
 
-
-   /* ================================
-   MOBILE MENU
-================================ */
-
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
-
-if (menuToggle && navLinks) {
-
-    menuToggle.addEventListener("click", () => {
-
-        menuToggle.classList.toggle("active");
-        navLinks.classList.toggle("active");
-
-    });
-
-
-    navLinks.querySelectorAll("a").forEach((link) => {
-
-        link.addEventListener("click", () => {
-
-            menuToggle.classList.remove("active");
-            navLinks.classList.remove("active");
-
-        });
-
-    });
-
-}
 });
