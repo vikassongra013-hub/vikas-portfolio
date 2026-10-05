@@ -856,3 +856,70 @@ footer {
     transform: scale(1.04);
     filter: brightness(1.08);
 }
+/* ================================
+   COMPACT MOBILE HERO
+================================ */
+
+@media (max-width: 600px) {
+
+    .hero {
+        min-height: auto;
+        padding-top: 105px;
+        padding-bottom: 35px;
+
+        gap: 10px;
+    }
+
+    .hero-content {
+        margin-bottom: 0;
+    }
+
+    .hero-label {
+        margin-bottom: 14px;
+    }
+
+    .hero h1 {
+        margin-bottom: 16px;
+    }
+
+    .hero h2 {
+        margin-bottom: 14px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .hero-buttons {
+        margin-top: 22px;
+    }
+
+    .hero-socials {
+        margin-top: 17px;
+    }
+
+    .hero-visual {
+        min-height: auto;
+        height: 285px;
+        margin-top: 5px;
+    }
+
+    .glow-circle {
+        width: 270px;
+        height: 270px;
+    }
+
+    .vk-card {
+        width: 260px;
+        height: 260px;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    #about {
+        padding-top: 45px;
+    }
+}
