@@ -1173,3 +1173,176 @@ footer {
 .menu-toggle.active span:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
 }
+
+/* =================================
+   FINAL PORTFOLIO POLISH
+================================= */
+
+.skip-link {
+    position: fixed;
+    top: -100px;
+    left: 20px;
+    z-index: 9999;
+
+    padding: 10px 16px;
+
+    background: var(--cyan);
+    color: #001018;
+
+    border-radius: 8px;
+
+    font-weight: 800;
+}
+
+.skip-link:focus {
+    top: 15px;
+}
+
+
+/* Project technology tags */
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+
+    margin: 18px 0;
+}
+
+.project-tags span {
+    padding: 5px 10px;
+
+    border: 1px solid rgba(0, 229, 255, 0.18);
+
+    border-radius: 999px;
+
+    background: rgba(0, 229, 255, 0.05);
+
+    color: #91a4b9;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* Better project hover */
+
+.project-card {
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-7px);
+
+    border-color:
+        rgba(0, 229, 255, 0.30);
+
+    box-shadow:
+        0 25px 70px rgba(0, 168, 255, 0.10);
+}
+
+
+/* Better links */
+
+.project-content a {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 7px;
+
+    color: var(--cyan);
+
+    font-weight: 800;
+
+    transition: 0.3s ease;
+}
+
+.project-content a:hover {
+    transform: translateX(4px);
+}
+
+
+/* Logo polish */
+
+.logo,
+.menu-toggle {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.logo {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.logo:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 30px rgba(0, 229, 255, 0.22);
+}
+
+
+/* Better buttons */
+
+.primary-button,
+.secondary-button,
+.nav-button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* Mobile final polish */
+
+@media (max-width: 900px) {
+
+    .nav-links {
+        z-index: 2000;
+    }
+
+    .menu-toggle {
+        position: relative;
+        z-index: 3000;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .hero h1 {
+        font-size: clamp(43px, 13vw, 55px);
+    }
+
+    .hero h2 {
+        font-size: 25px;
+    }
+
+    .hero-buttons {
+        width: 100%;
+    }
+
+    .primary-button,
+    .secondary-button {
+        min-height: 52px;
+        flex: 1;
+    }
+
+    .project-card {
+        min-height: auto;
+    }
+
+    .project-tags {
+        margin-top: 15px;
+    }
+
+    .contact-box h3 {
+        font-size: 25px;
+    }
+
+}
